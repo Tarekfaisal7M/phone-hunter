@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phone Hunting web Site</title>
+    <link rel="icon" type="image" href="/images/android-chrome-192x192.png">
 
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -40,8 +41,10 @@
     
         <dialog id="my_modal_1" class="modal">
             <div class="modal-box">
-                <h3 class="font-bold text-lg">Hello!</h3>
-                <p class="py-4">Press ESC key or click the button below to close</p>
+                <h3 id="show-details-phone-name" class="font-bold text-lg">Hello!</h3>
+                <div id="show-details-container">
+
+                </div>
                 <div class="modal-action">
                     <form method="dialog">
                         <!-- if there is a button in form, it will close the modal -->
@@ -59,3 +62,4 @@
 </body>
 
 </html>
+

@@ -37,7 +37,7 @@ const displayPhones = (phones, isShowAll) => {
                             alt="Shoes" /></figure>
                     <div class="card-body">
                         <h2 class="card-title">${phone.phone_name}</h2>
-                        <p>kinle kin, Na kinle vag </p>
+                        <p><span>price:</span>bolbo na</p>
                         <div class="card-actions justify-center">
                             <button onclick="handleShowDetail('${phone.slug}')" class="btn btn-primary">Show Details</button>
                         </div>
@@ -52,18 +52,33 @@ const displayPhones = (phones, isShowAll) => {
 
 // handale show details 
 const handleShowDetail = async(id) => {
-    // console.log(`korlam dhon click`, id);
+    // console.log(`korlam  click`, id);
 
     // load single load data
     const res = await fetch(`https://openapi.programming-hero.com/api/phone/${id}`)
     const data = await res.json();
-    const phone = data.data;
+   const phone = data.data;
     showPhoneDetails(phone);
 }
 
 // show modal details
-const showPhoneDetails = () => {
-    // console.log(phone);
+const showPhoneDetails = (phone) => {
+    console.log(phone);
+    const phoneName = document.getElementById(`show-details-phone-name`);
+    phoneName.innerText = phone.name;
+    const showDetailsContainer = document.getElementById(`show-details-container`);
+    showDetailsContainer.innerHTML = `
+    <img class="items-center" src="${phone.image}" alt="">
+    <P><span class="font-bold text-black">brand :</span>${phone.brand}</P>
+    <P><span class="font-bold text-black">releaseDate:</span>${phone.releaseDate}</P>
+    <P><span class="font-bold text-black">chipSet:</span>${phone?.mainFeatures?.chipSet}</P>
+
+    <P><span class="font-bold text-black">displaySize:</span>${phone?.mainFeatures?.displaySize}</P>
+    <P><span class="font-bold text-black">storage:</span>${phone?.mainFeatures?.storage}</P>
+    <P><span class="font-bold text-black">sensors:</span>${phone?.mainFeatures?.sensors}</P>
+    <P><span class="font-bold text-black">Bluetooth:</span>${phone?.others?.Bluetooth}</P>
+
+    `
     
     my_modal_1.showModal();
 }
